@@ -6,7 +6,7 @@ import re
 class OlxSpider(scrapy.Spider):
     name = 'olx'
     allowed_domains = ['sp.olx.com.br']
-    start_urls = ['https://sp.olx.com.br/sao-paulo-e-regiao/servicos?sf=1']
+    start_urls = ['https://sp.olx.com.br/sao-paulo-e-regiao/servicos?sct=10&sct=9&sct=6&sct=2&sct=4&sct=5&sct=11&sf=1']
 
     def parse(self, response):
         items = response.xpath(
@@ -38,7 +38,7 @@ class OlxSpider(scrapy.Spider):
         a = telefones
         c = 0
         while c < d:
-            a[c] = '021' + str(re.sub(r'[^0-9]+', '', telefones[c]))
+            a[c] = '+55' + str(re.sub(r'[^0-9]+', '', telefones[c]))
             print(a)
             c = c + 1        
 
